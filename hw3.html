@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <title>Homework 3</title>
+     <meta charset="utf-8">
+   <script src="files/d3.min.js"></script> 
+<style>
+  
+   .blue{
+      background-color:blue;
+
+
+     }
+</style>
+  </head>
+  <body>
+ 
+    <script>
+
+     var body = d3.select('body');
+    body
+    .attr('class', 'blue')
+    .insert('div').append('h1').text("Woking with D3").style({'color':'white', 'text-decoration': 'underline', 'text-align':'center'})
+
+
+
+        var data = [1, 2, 3, 4, 5,6];
+        
+        var scale = d3.scale.linear()
+           .domain([1, 6])
+           .range([0, 500]);
+        
+        var svg = d3.select("body").append("svg")
+           .attr("width", 600)
+           .attr("height", 250);
+
+      var colors = d3.scale.category10()
+          .domain([1, 2, 3, 4, 5, 6]);
+
+
+        
+        svg.selectAll("rect")
+           .data(data)
+           .enter().append("rect")
+           .attr("x", function (d) { return scale(d); })
+           .attr("y", 30)
+           .attr("width", 60)
+           .attr("height", 60)
+        
+           .style('fill', function (d) {return colors(d); })
+           .style({
+            'stroke':'black',
+            'stroke-width':'5px'
+           })
+                
+              
+           
+    </script>
+  </body>
+</html>
+ 
